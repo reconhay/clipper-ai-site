@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clipper AI — Shorts a partir de transmissões autorizadas</title>
+  <meta name="description" content="Clipper AI é uma ferramenta local que monitora transmissões autorizadas, seleciona e edita Shorts e publica nos canais do próprio dono pela YouTube Data API.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238b5cf6'/%3E%3Cpath d='M12 9l12 7-12 7z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Clipper AI, início">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="32" height="32" rx="8" fill="url(#g)"/><path d="M12 9l12 7-12 7z" fill="#0b0d12"/></svg>
+      <span>Clipper <b>AI</b></span>
+    </a>
+    <nav aria-label="Principal">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="privacy.html">Privacidade</a>
+      <a href="terms.html">Termos</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill"><span class="dot"></span> Lives autorizadas → Shorts</span>
+        <h1>Os melhores momentos da live, <span class="grad">editados como Shorts</span>.</h1>
+        <p class="lead">O Clipper AI roda no computador do próprio dono dos canais. Ele acompanha transmissões de criadores que deram autorização, encontra os momentos de maior reação, gera Shorts verticais com legenda e envia ao canal do YouTube dele, só depois de aprovação manual.</p>
+        <div class="cta">
+          <a class="btn primary" href="#como-funciona">Como funciona</a>
+          <a class="btn ghost" href="privacy.html">Política de Privacidade</a>
+        </div>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <span class="live">AO VIVO</span>
+        <div class="wave"><i style="height:30%"></i><i style="height:55%"></i><i style="height:40%"></i><i style="height:85%"></i><i style="height:100%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:35%"></i><i style="height:50%"></i></div>
+        <div class="cap">Ele não acreditou <em>no que viu</em></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="o-que-e">
+    <div class="wrap">
+      <h2>O que é</h2>
+      <p class="sub">Uma ferramenta pessoal e local, não um serviço on-line. Não há contas de usuário, servidor próprio nem venda de dados: o software roda em um único computador Windows e só atende os canais de quem o opera.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="icon red"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></div>
+          <h3>Monitoramento autorizado</h3>
+          <p>Verifica se os criadores cadastrados, e só aqueles com autorização registrada, estão ao vivo na Twitch. Quando ninguém está ao vivo, usa vídeos autorizados ainda não aproveitados.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></div>
+          <h3>Seleção e edição</h3>
+          <p>Transcrição de fala feita no próprio computador, volume e atividade do chat apontam os melhores trechos. Os cortes saem em vídeo vertical, com legenda no idioma original.</p>
+        </div>
+        <div class="card">
+          <div class="icon cyan"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></svg></div>
+          <h3>Publicação no YouTube</h3>
+          <p>Envio pela YouTube Data API oficial ao canal conectado pelo próprio dono, como vídeo não listado, só depois de aprovação manual de cada corte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona">
+    <div class="wrap">
+      <h2>Como funciona</h2>
+      <p class="sub">O fluxo inteiro acontece no computador do operador, e duas etapas dependem de uma pessoa: autorizar a fonte e aprovar a publicação.</p>
+      <ol class="steps">
+        <li><strong>Autorização da fonte.</strong> O operador cadastra só criadores que deram permissão por escrito, com evidência e data registradas. Fontes sem autorização não são monitoradas.</li>
+        <li><strong>Captura.</strong> Quando um criador autorizado entra ao vivo, a transmissão é gravada em blocos. Do chat público são usadas só contagens por segundo (mensagens e pessoas diferentes); o texto das mensagens não é guardado.</li>
+        <li><strong>Seleção e edição.</strong> O áudio é transcrito localmente, sem serviços pagos de transcrição. Os trechos mais fortes viram Shorts de 25 a 60 segundos com legenda.</li>
+        <li><strong>Revisão.</strong> Cada Short entra em uma fila de revisão. Nada é publicado automaticamente.</li>
+        <li><strong>Publicação.</strong> Com aprovação manual, o vídeo é enviado como não listado ao canal da região correspondente, com crédito à origem na descrição.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="oauth">
+    <div class="wrap">
+      <h2>Conexão com o YouTube (OAuth)</h2>
+      <p class="sub">O Clipper AI usa o OAuth 2.0 do Google para que o próprio dono dos canais faça login no navegador, escolha o canal e permita os envios. A senha do Google nunca passa pelo aplicativo.</p>
+      <div class="grid two">
+        <div class="card">
+          <div class="scope">
+            <div class="icon cyan"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg></div>
+            <div>
+              <h3><code>youtube.upload</code></h3>
+              <p>Enviar ao canal conectado os Shorts que o operador aprovou e o vídeo de teste técnico. A visibilidade enviada é sempre "não listado".</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="scope">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div>
+              <h3><code>youtube.readonly</code></h3>
+              <p>Ler o ID e o nome do canal conectado, para confirmar antes de cada envio que a credencial ainda corresponde ao canal certo, e ler o status (visibilidade e processamento) dos vídeos que o próprio aplicativo enviou.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:20px">As credenciais ficam só no computador do operador, cifradas com o Windows DPAPI. O acesso pode ser revogado a qualquer momento em <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>. Detalhes na <a href="privacy.html">Política de Privacidade</a>.</p>
+    </div>
+  </section>
+
+  <section id="principios">
+    <div class="wrap">
+      <h2>Princípios</h2>
+      <div class="grid">
+        <div class="card"><h3>Só conteúdo autorizado</h3><p>Nenhuma fonte é capturada sem autorização registrada pelo operador. Veja os <a href="terms.html">Termos de Serviço</a>.</p></div>
+        <div class="card"><h3>Humano no controle</h3><p>A publicação exige aprovação manual de cada corte e tem limite diário de envios por canal.</p></div>
+        <div class="card"><h3>Local primeiro</h3><p>Processamento, banco de dados e credenciais ficam no computador do operador. Não há servidor do Clipper AI.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Clipper AI. Projeto independente, sem afiliação ao Google, YouTube ou Twitch.</span>
+    <nav aria-label="Rodapé">
+      <a href="index.html">Início</a>
+      <a href="privacy.html">Privacidade</a>
+      <a href="terms.html">Termos</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

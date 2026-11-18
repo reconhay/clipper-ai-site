@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de Privacidade — Clipper AI</title>
+  <meta name="description" content="Como o Clipper AI acessa, usa, armazena e compartilha dados, incluindo os dados obtidos pela YouTube Data API.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238b5cf6'/%3E%3Cpath d='M12 9l12 7-12 7z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Clipper AI, início">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="32" height="32" rx="8" fill="url(#g)"/><path d="M12 9l12 7-12 7z" fill="#0b0d12"/></svg>
+      <span>Clipper <b>AI</b></span>
+    </a>
+    <nav aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="privacy.html" aria-current="page">Privacidade</a>
+      <a href="terms.html">Termos</a>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+  <h1>Política de Privacidade</h1>
+  <p class="meta">Última atualização: 18 de novembro de 2026</p>
+
+  <div class="summary" lang="en">
+    <strong>Summary in English</strong>
+    <p>Clipper AI is a desktop tool that runs on its operator's own Windows computer; there is no Clipper AI server. With Google OAuth (scopes <code>youtube.upload</code> and <code>youtube.readonly</code>), the channel owner lets it read the connected channel's ID and title, upload videos the operator approved (always as unlisted) and read the status of those uploads. Refresh tokens are stored only on that computer, encrypted with Windows DPAPI. Google user data is not sold, not used for advertising and not shared with third parties. Access can be revoked at any time at myaccount.google.com/permissions.</p>
+  </div>
+
+  <nav class="toc" aria-label="Nesta página">
+    <strong>Nesta página</strong>
+    <ol>
+      <li><a href="#quem">Quem somos e a quem se aplica</a></li>
+      <li><a href="#google">Dados do Google/YouTube</a></li>
+      <li><a href="#escopos">Escopos OAuth e finalidades</a></li>
+      <li><a href="#armazenamento">Armazenamento e segurança</a></li>
+      <li><a href="#outras-fontes">Dados de transmissões e vídeos</a></li>
+      <li><a href="#compartilhamento">Compartilhamento</a></li>
+      <li><a href="#retencao">Retenção e exclusão</a></li>
+      <li><a href="#revogacao">Revogação de acesso</a></li>
+      <li><a href="#site">Este site</a></li>
+      <li><a href="#contato">Alterações e contato</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="quem">1. Quem somos e a quem se aplica</h2>
+  <p>O Clipper AI é uma ferramenta independente que roda localmente em um computador Windows do seu operador, o dono dos canais do YouTube conectados a ela. Não existe um servidor, uma nuvem ou um serviço on-line do Clipper AI que receba seus dados: todo o processamento e todo o armazenamento descritos aqui acontecem nesse computador.</p>
+  <p>Esta política descreve o que o software faz com dados, com base no seu funcionamento atual. Ela se aplica:</p>
+  <ul>
+    <li>às contas Google/YouTube conectadas ao aplicativo pelo operador;</li>
+    <li>aos dados públicos de transmissões e vídeos de criadores que autorizaram o uso do seu conteúdo.</li>
+  </ul>
+
+  <h2 id="google">2. Dados do Google/YouTube que o aplicativo acessa</h2>
+  <p>Quando o operador conecta um canal pelo login do Google, o aplicativo recebe e usa:</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Dado</th><th>Como é obtido</th><th>Para que é usado</th></tr></thead>
+    <tbody>
+      <tr><td>Tokens OAuth (de acesso e de atualização)</td><td>Resposta do servidor de autorização do Google após o login</td><td>Autorizar as chamadas à YouTube Data API em nome do dono do canal</td></tr>
+      <tr><td>ID e nome do canal conectado</td><td><code>channels.list</code> com <code>mine=true</code></td><td>Associar cada canal à sua região (Brasil, EUA ou Espanhol) e confirmar, antes de cada envio, que a credencial ainda corresponde ao canal registrado</td></tr>
+      <tr><td>ID, visibilidade e status de processamento dos vídeos enviados pelo próprio aplicativo</td><td>Resposta do envio e <code>videos.list</code> (partes <code>status</code> e <code>processingDetails</code>)</td><td>Registrar o resultado do envio e confirmar que o vídeo ficou não listado e foi processado</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>A senha da conta Google não passa pelo aplicativo: o login acontece na página do próprio Google, no navegador. O aplicativo não lê inscritos, comentários, mensagens, estatísticas, dados de monetização nem outros vídeos do canal.</p>
+
+  <h2 id="escopos">3. Escopos OAuth solicitados e finalidades</h2>
+  <ul>
+    <li><code>https://www.googleapis.com/auth/youtube.upload</code>: enviar ao canal conectado os Shorts que o operador aprovou manualmente e os vídeos de teste técnico gerados pelo próprio aplicativo. A visibilidade definida no envio é sempre "não listado".</li>
+    <li><code>https://www.googleapis.com/auth/youtube.readonly</code>: ler o ID e o nome do canal conectado (verificação de identidade antes de cada envio) e o status dos vídeos que o próprio aplicativo enviou.</li>
+  </ul>
+  <p>Se a permissão de envio não for concedida no login, o aplicativo recusa a conexão. Os dados recebidos das APIs do Google são usados apenas para essas finalidades, voltadas ao próprio dono do canal. Eles não são vendidos, não são usados para publicidade, não servem para treinar modelos de IA e não são transferidos a terceiros.</p>
+
+  <h2 id="armazenamento">4. Armazenamento e segurança</h2>
+  <ul>
+    <li><strong>Token de atualização e ID do canal:</strong> gravados em um arquivo local por canal, cifrado com o Windows DPAPI no escopo do usuário do Windows. Só esse usuário, nesse computador, consegue decifrar.</li>
+    <li><strong>Credenciais do cliente OAuth</strong> (ID e segredo do aplicativo no Google Cloud): também gravadas cifradas com DPAPI. O arquivo JSON original baixado do Google é apagado pelo operador depois da importação.</li>
+    <li><strong>Token de acesso:</strong> obtido a cada uso, mantido só na memória durante a operação e não gravado em disco.</li>
+    <li><strong>Banco de dados local (SQLite), sem nenhum token ou segredo:</strong>
+      <ul>
+        <li>ID e nome de cada canal conectado e a data da conexão;</li>
+        <li>histórico de envios: ID e URL do vídeo, título, visibilidade, status, data, eventuais erros e hash do arquivo;</li>
+        <li>fila de revisão: título, descrição e tags aprovados.</li>
+      </ul>
+    </li>
+    <li><strong>Registros (logs) locais:</strong> registram eventos como "canal conectado" e "vídeo enviado", com nome do canal e URL do vídeo. Tokens e segredos não são registrados.</li>
+  </ul>
+  <p><strong>Limitações:</strong> a proteção do DPAPI depende da segurança da conta do Windows e do computador do operador. Quem tiver acesso a essa conta pode usar as credenciais. Nenhum sistema é totalmente seguro, e não oferecemos garantias além das descritas aqui.</p>
+
+  <h2 id="outras-fontes">5. Dados de transmissões e vídeos de criadores</h2>
+  <ul>
+    <li><strong>Status de transmissão:</strong> o aplicativo consulta se os criadores cadastrados, só os autorizados, estão ao vivo na Twitch, usando informações públicas e sem login.</li>
+    <li><strong>Gravações e vídeos de origem:</strong> transmissões ao vivo e vídeos públicos desses criadores são gravados ou baixados para gerar os cortes. As gravações e os vídeos de origem são apagados automaticamente cerca de 24 horas depois de processados. Os Shorts gerados ficam no computador até o operador apagá-los.</li>
+    <li><strong>Chat da Twitch:</strong> lido de forma anônima, sem login, só para medir a atividade, com contagens de mensagens e de pessoas diferentes por segundo. O texto das mensagens não é armazenado. Os nomes dos participantes ficam na memória por poucos minutos, só para contar pessoas distintas, e não são gravados em disco.</li>
+    <li><strong>Transcrição de fala:</strong> feita localmente, no próprio computador, sem enviar áudio a serviços externos.</li>
+  </ul>
+
+  <h2 id="compartilhamento">6. Compartilhamento</h2>
+  <p>O Clipper AI não vende, aluga nem compartilha dados pessoais com terceiros. As únicas comunicações externas são as necessárias para funcionar:</p>
+  <ul>
+    <li>com o Google (<code>accounts.google.com</code>, <code>oauth2.googleapis.com</code> e <code>www.googleapis.com</code>), para login, renovação de tokens, leitura do canal e envio de vídeos;</li>
+    <li>com a Twitch e o YouTube, para ler o status público das transmissões e obter o conteúdo dos criadores autorizados.</li>
+  </ul>
+  <p>Os vídeos enviados ao YouTube passam a seguir as regras do YouTube. Veja os <a href="https://www.youtube.com/t/terms" rel="noopener">Termos de Serviço do YouTube</a> e a <a href="https://policies.google.com/privacy" rel="noopener">Política de Privacidade do Google</a>.</p>
+
+  <h2 id="retencao">7. Retenção e exclusão</h2>
+  <ul>
+    <li><strong>Tokens cifrados:</strong> ficam guardados até o operador apagar o arquivo local do canal ou reconectá-lo. Depois que o acesso é revogado no Google, eles deixam de funcionar.</li>
+    <li><strong>Histórico de envios e dados do canal no banco local:</strong> ficam até o operador excluí-los. Não há exclusão automática.</li>
+    <li><strong>Gravações e vídeos de origem:</strong> são apagados cerca de 24 horas depois de processados.</li>
+    <li><strong>Transcrições e Shorts gerados:</strong> ficam no computador do operador até ele apagá-los.</li>
+    <li><strong>Logs:</strong> são rotacionados por tamanho, e os arquivos mais antigos são descartados.</li>
+  </ul>
+  <p>Como todos os dados ficam no computador do operador, a exclusão é feita por ele. Um dono de canal ou criador que queira a remoção de dados pode pedir pelo canal de contato abaixo.</p>
+
+  <h2 id="revogacao">8. Revogação de acesso</h2>
+  <p>O acesso do Clipper AI à conta Google pode ser revogado a qualquer momento em <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>. Depois da revogação, a renovação do token falha e o aplicativo não consegue mais ler o canal nem enviar vídeos até que o dono conecte o canal de novo.</p>
+
+  <h2 id="site">9. Este site</h2>
+  <p>Este site é estático, hospedado no GitHub Pages. Ele não usa formulários, cookies de rastreamento, ferramentas de análise nem scripts de terceiros. O GitHub, como provedor de hospedagem, pode registrar dados técnicos de acesso, como o endereço IP, conforme a <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">declaração de privacidade do GitHub</a>.</p>
+
+  <h2 id="contato">10. Alterações e contato</h2>
+  <p>Esta política pode ser atualizada quando o funcionamento do aplicativo mudar. A data no topo indica a última revisão.</p>
+  <p>Contato: abra uma solicitação em <a href="https://github.com/reconhay/clipper-ai-site/issues" rel="noopener">github.com/reconhay/clipper-ai-site/issues</a>. Para pedidos que envolvam dados pessoais, não inclua informações sensíveis na mensagem pública: peça um canal de contato privado.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Clipper AI. Projeto independente, sem afiliação ao Google, YouTube ou Twitch.</span>
+    <nav aria-label="Rodapé">
+      <a href="index.html">Início</a>
+      <a href="privacy.html">Privacidade</a>
+      <a href="terms.html">Termos</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
